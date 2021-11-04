@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 09:38:55 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/04 14:36:20 by yed-dyb          ###   ########.fr       */
+/*   Created: 2021/11/04 19:54:53 by yed-dyb           #+#    #+#             */
+/*   Updated: 2021/11/04 20:58:33 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	i;
-	char	*substr;
+	unsigned int	i;
 
-	if (ft_strlen(s) < start || len == 0)
-		return (ft_calloc(1, sizeof(char)));
-	substr = ft_calloc(len + 1, sizeof(char));
-	if (!substr)
-		return (0);
 	i = 0;
-	while (i < len && s[start])
+	while (s[i])
 	{
-		substr[i] = s[start];
-		start++;
+		f(i, &s[i]);
 		i++;
 	}
-	return (substr);
+}
+/*char to_upper(unsigned int i , char c) {
+	return c - 32;
 }
 
-/*int main () {
-	printf("%s", ft_substr("tripouille", 1, 1));
+int main () {
+	printf("%s", ft_strmapi("hello", &to_upper));
 }*/

@@ -6,7 +6,7 @@
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 10:45:41 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/03 09:13:38 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2021/11/04 09:39:58 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strrchr(const char *s, int c)
 
 	i = ft_strlen(s);
 	a = c;
-	while (i > 0)
+	while (i >= 0)
 	{
 		if (s[i] == a)
 			return (&((char *)s)[i]);
@@ -27,3 +27,6 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
+/*int main () {
+	printf("%s", ft_strrchr("tripouille", 't'));
+}*/

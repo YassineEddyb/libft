@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 09:38:55 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/04 14:36:20 by yed-dyb          ###   ########.fr       */
+/*   Created: 2021/11/04 20:36:37 by yed-dyb           #+#    #+#             */
+/*   Updated: 2021/11/04 20:55:43 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
-	char	*substr;
+	long int	nbr;
 
-	if (ft_strlen(s) < start || len == 0)
-		return (ft_calloc(1, sizeof(char)));
-	substr = ft_calloc(len + 1, sizeof(char));
-	if (!substr)
-		return (0);
-	i = 0;
-	while (i < len && s[start])
+	nbr = n;
+	if (nbr < 0)
 	{
-		substr[i] = s[start];
-		start++;
-		i++;
+		nbr *= -1;
+		ft_putchar_fd('-', fd);
 	}
-	return (substr);
+	if (nbr >= 10)
+	{
+		ft_putnbr_fd(nbr / 10, fd);
+		ft_putnbr_fd(nbr % 10, fd);
+	}
+	else
+		ft_putchar_fd(nbr + 48, fd);
 }
-
-/*int main () {
-	printf("%s", ft_substr("tripouille", 1, 1));
-}*/

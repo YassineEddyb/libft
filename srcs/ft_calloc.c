@@ -6,7 +6,7 @@
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 21:19:07 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/03 09:29:38 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2021/11/04 15:24:53 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_calloc(size_t count, size_t size)
 
 	i = 0;
 	ptr = malloc(count * size);
-	while (i < count)
+	while (i < count * size)
 	{
 		ptr[i] = 0;
 		i++;

@@ -6,7 +6,7 @@
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:02:34 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/03 11:26:59 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2021/11/04 16:24:46 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
-	size_t	s1_len;
-	size_t	s2_len;
-	size_t	i;
+	int		s1_len;
+	int		s2_len;
+	int		i;
 	int		j;
 
 	s1_len = ft_strlen(s1);
@@ -35,3 +35,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str[i] = '\0';
 	return (str);
 }
+
+/*int main () {
+	printf("%s", ft_strjoin("", "42"));
+}*/

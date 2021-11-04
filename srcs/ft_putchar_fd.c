@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 09:38:55 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/04 14:36:20 by yed-dyb          ###   ########.fr       */
+/*   Created: 2021/11/04 20:10:12 by yed-dyb           #+#    #+#             */
+/*   Updated: 2021/11/04 20:26:47 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	i;
-	char	*substr;
-
-	if (ft_strlen(s) < start || len == 0)
-		return (ft_calloc(1, sizeof(char)));
-	substr = ft_calloc(len + 1, sizeof(char));
-	if (!substr)
-		return (0);
-	i = 0;
-	while (i < len && s[start])
-	{
-		substr[i] = s[start];
-		start++;
-		i++;
-	}
-	return (substr);
+void ft_putchar_fd(char c, int fd) {
+	write(fd, &c, 1);
 }
 
-/*int main () {
-	printf("%s", ft_substr("tripouille", 1, 1));
+/*int main() {
+	int fd = open("./test", 2);
+	ft_putchar_fd('z', fd);
 }*/

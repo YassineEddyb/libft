@@ -6,22 +6,20 @@
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:29:20 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/03 14:29:24 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2021/11/04 15:03:35 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_sep(char c, char *sep)
+#include "libft.h"
+
+static int	is_sep(char c, char sep)
 {
-	while (*sep)
-	{
-		if (*sep == c)
-			return (1);
-		sep++;
-	}
+	if (sep == c)
+		return (1);
 	return (0);
 }
 
-int	count_strs(char *str, char *sep)
+static int	count_strs(const char *str, char sep)
 {
 	int	counter;
 	int	i;
@@ -39,7 +37,7 @@ int	count_strs(char *str, char *sep)
 	return (counter);
 }
 
-int	*count_size(char *str, char *sep)
+static int	*count_size(const char *str, char sep)
 {
 	int	i;
 	int	index;
@@ -67,7 +65,7 @@ int	*count_size(char *str, char *sep)
 	return (arr);
 }
 
-void	ft_strncpy(char *src, char *dest, int size)
+void	ft_strncpy(const char *src, char *dest, int size)
 {
 	int	i;
 
@@ -80,28 +78,31 @@ void	ft_strncpy(char *src, char *dest, int size)
 	dest[i] = 0;
 }
 
-char	**ft_split(char *str, char *charset)
+char	**ft_split(char const *s, char c)
 {
 	int		i;
 	int		index;
 	int		*word;
 	char	**words;
 
-	words = (char **) malloc(sizeof(char *) * (count_strs(str, charset) + 1));
-	word = count_size(str, charset);
+	words = (char **) malloc(sizeof(char *) * (count_strs(s, c) + 1));
+	word = count_size(s, c);
 	i = 0;
 	index = 0;
-	while (str[i])
+	while (s[i])
 	{
-		if ((i == 0 && is_sep(str[i], charset) == 0) || \
-			(is_sep(str[i], charset) == 0 && is_sep(str[i - 1], charset) == 1))
+		if ((i == 0 && is_sep(s[i], c) == 0) || \
+			(is_sep(s[i], c) == 0 && is_sep(s[i - 1], c) == 1))
 		{
 			words[index] = malloc(sizeof(char) * (word[index] + 1));
-			ft_strncpy(str + i, words[index], word[index]);
+			ft_strncpy((char *)s + i, words[index], word[index]);
 			index++;
 		}
 		i++;
 	}
 	words[index] = 0;
+	free(word);
 	return (words);
 }
+
+
