@@ -1,45 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memmove.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 19:57:07 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/05 10:43:37 by yed-dyb          ###   ########.fr       */
+/*   Created: 2021/11/05 13:59:05 by yed-dyb           #+#    #+#             */
+/*   Updated: 2021/11/05 14:31:43 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
+	t_list	*tmp1;
+	t_list	*tmp2;
 
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	i = -1;
-	if (d > s)
+	tmp1 = *lst;
+	while (tmp1)
 	{
-		while (len-- > 0)
-			d[len] = s[len];
+		tmp2 = tmp1;
+		tmp1 = tmp1->next;
 	}
-	else
-	{
-		while (++i < len)
-			d[i] = s[i];
-	}
-	return (dst);
+	tmp2->next = new;
 }
 
 /*int main () {
-	int sResult[] = {67, 68, 67, 68, 69, 0, 45};
-	ft_memmove(sResult, sResult + 1, 2);
-	int i = 0;
-	while(i > 7) {
-		printf("%c ", sResult[i]);
-		i++;
+	t_list *head;
+	head = malloc(3 * sizeof(t_list));
+	head->content = "first";
+	head->next = ft_lstnew("second");
+	head->next->next = ft_lstnew("third");
+	head->next->next->next = NULL;
+
+	ft_lstadd_back(&head, ft_lstnew("fourth"));
+	while (head) {
+		printf("%s\n", head->content);
+		head = head->next;
 	}
 }*/

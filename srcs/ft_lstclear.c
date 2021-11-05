@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 09:38:55 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/05 15:30:31 by yed-dyb          ###   ########.fr       */
+/*   Created: 2021/11/05 17:02:46 by yed-dyb           #+#    #+#             */
+/*   Updated: 2021/11/05 17:23:30 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	size_t	i;
-	char	*substr;
+	t_list	*tmp;
 
-	if (ft_strlen(s) < start || len == 0)
-		return (ft_calloc(1, sizeof(char)));
-	substr = ft_calloc(ft_strlen(s) - start, sizeof(char));
-	if (!substr)
-		return (0);
-	i = 0;
-	while (i < len && s[start])
+	tmp = *lst;
+	if (*lst)
 	{
-		substr[i] = s[start];
-		start++;
-		i++;
+		del(tmp->content);
+		free(tmp);
+		*lst = NULL;
 	}
-	return (substr);
 }
-
-/*int main () {
-	printf("%s", ft_substr("tripouille", 1, 1));
-}*/

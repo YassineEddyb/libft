@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 16:50:16 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/05 11:53:02 by yed-dyb          ###   ########.fr       */
+/*   Created: 2021/11/05 17:25:08 by yed-dyb           #+#    #+#             */
+/*   Updated: 2021/11/05 18:54:38 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	unsigned int	i;
-	char			*str;
-
-	str = ft_calloc((ft_strlen(s) + 1), sizeof(char));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (s[i])
+	while (lst)
 	{
-		str[i] = f(i, s[i]);
-		i++;
+		f(lst);
+		lst = lst->next;
 	}
-	str[i] = '\0';
-	return (str);
 }
 
-/*char to_upper(unsigned int i , char c) {
-	return c - 32;
+/*void toTest(void *lst) {
+	((t_list *)lst)->content = "test";
 }
-
-char addOne(unsigned int i, char c) {return (i + c);}
 
 int main () {
-	printf("%s", ft_strmapi("", addOne));
+	t_list *head;
+	head = malloc(3 * sizeof(t_list));
+	head->content = "first";
+	head->next = ft_lstnew("second");
+	head->next->next = ft_lstnew("third");
+	head->next->next->next = NULL;
+
+	ft_lstiter(head, toTest);
+	while (head) {
+		printf("%s\n", head->content);
+		head = head->next;
+	}
 }*/

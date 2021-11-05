@@ -1,45 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memmove.c                                          :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 19:57:07 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/05 10:43:37 by yed-dyb          ###   ########.fr       */
+/*   Created: 2021/11/05 11:24:29 by yed-dyb           #+#    #+#             */
+/*   Updated: 2021/11/05 12:16:59 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int	ft_lstsize(t_list *lst)
 {
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
+	int	count;
 
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	i = -1;
-	if (d > s)
+	count = 0;
+	while (lst)
 	{
-		while (len-- > 0)
-			d[len] = s[len];
+		lst = lst->next;
+		count++;
 	}
-	else
-	{
-		while (++i < len)
-			d[i] = s[i];
-	}
-	return (dst);
+	return (count);
 }
 
 /*int main () {
-	int sResult[] = {67, 68, 67, 68, 69, 0, 45};
-	ft_memmove(sResult, sResult + 1, 2);
-	int i = 0;
-	while(i > 7) {
-		printf("%c ", sResult[i]);
-		i++;
-	}
+	t_list *head;
+	head = malloc(3 * sizeof(t_list));
+	head->content = "first";
+	head->next = ft_lstnew("second");
+	head->next->next = ft_lstnew("third");
+	head->next->next->next = NULL;
+
+	printf("%d", ft_lstsize(head));
 }*/
