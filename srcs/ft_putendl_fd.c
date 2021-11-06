@@ -6,13 +6,14 @@
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 20:40:10 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/04 20:41:50 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2021/11/06 16:04:59 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putendl_fd(char *s, int fd) {
+void	ft_putendl_fd(char *s, int fd)
+{
 	ft_putstr_fd(s, fd);
 	ft_putchar_fd('\n', fd);
 }

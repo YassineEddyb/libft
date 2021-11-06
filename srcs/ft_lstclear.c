@@ -6,7 +6,7 @@
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:02:46 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/05 17:23:30 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2021/11/06 16:03:09 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
 	t_list	*tmp;
 
-	tmp = *lst;
-	if (*lst)
+	if (lst)
 	{
-		del(tmp->content);
-		free(tmp);
-		*lst = NULL;
+		while (*lst)
+		{
+			tmp = *lst;
+			del(tmp->content);
+			free(tmp);
+			*lst = (*lst)->next;
+		}
+		lst = NULL;
 	}
 }

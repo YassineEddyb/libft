@@ -6,7 +6,7 @@
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 13:59:05 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/05 14:31:43 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2021/11/06 16:02:02 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*tmp1;
-	t_list	*tmp2;
+	t_list	*tmp;
 
-	tmp1 = *lst;
-	while (tmp1)
+	if (!lst)
+		return ;
+	if (*lst)
 	{
-		tmp2 = tmp1;
-		tmp1 = tmp1->next;
+		tmp = ft_lstlast(*lst);
+		tmp->next = new;
 	}
-	tmp2->next = new;
+	else
+	{
+		*lst = new;
+	}
 }
 
 /*int main () {

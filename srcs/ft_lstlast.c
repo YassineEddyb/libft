@@ -6,7 +6,7 @@
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 12:36:26 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/05 12:54:40 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2021/11/06 16:03:33 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ t_list	*ft_lstlast(t_list *lst)
 {
 	t_list	*tmp;
 
+	if (!lst)
+		return (0);
 	while (lst)
 	{
 		tmp = lst;
@@ -32,5 +34,7 @@ t_list	*ft_lstlast(t_list *lst)
 	head->next->next = ft_lstnew("third");
 	head->next->next->next = NULL;
 
-	printf("%s", ft_lstlast(head)->content);
+	t_list *l = NULL;
+	ft_lstadd_back(&l, ft_lstnew((void*)1));
+	printf("%d", (int)ft_lstlast(l)->content);
 }*/

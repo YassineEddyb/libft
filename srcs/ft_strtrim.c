@@ -6,7 +6,7 @@
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:28:47 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/04 13:05:20 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2021/11/06 16:06:07 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 /*int main () {
 	printf("%s", ft_strtrim("abcdba", "acb"));
 }*/
-
