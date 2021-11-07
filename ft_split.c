@@ -6,7 +6,7 @@
 /*   By: yed-dyb <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:29:20 by yed-dyb           #+#    #+#             */
-/*   Updated: 2021/11/06 16:05:22 by yed-dyb          ###   ########.fr       */
+/*   Updated: 2021/11/07 10:20:50 by yed-dyb          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ static int	count_strs(const char *str, char sep)
 	counter = 0;
 	while (str[i])
 	{
-		if (i == 0 && !is_sep(str[i], sep))
-			counter++;
-		else if (i > 0 && !is_sep(str[i], sep) && is_sep((str[i - 1]), sep))
+		if ((i == 0 && !is_sep(str[i], sep)) \
+				|| (i > 0 && !is_sep(str[i], sep) && is_sep((str[i - 1]), sep)))
 			counter++;
 		i++;
 	}
@@ -45,7 +44,7 @@ static int	*count_size(const char *str, char sep)
 	int	size;
 
 	size = count_strs(str, sep);
-	arr = (int *) malloc(sizeof(int) * size);
+	arr = malloc(sizeof(int) * size);
 	i = 0;
 	while (i < size)
 	{
@@ -65,7 +64,7 @@ static int	*count_size(const char *str, char sep)
 	return (arr);
 }
 
-void	ft_strncpy(const char *src, char *dest, int size)
+static void	ft_strncpy(const char *src, char *dest, int size)
 {
 	int	i;
 
@@ -85,14 +84,14 @@ char	**ft_split(char const *s, char c)
 	int		*word;
 	char	**words;
 
-	words = (char **) malloc(sizeof(char *) * (count_strs(s, c) + 1));
+	words = malloc(sizeof(char *) * (count_strs(s, c) + 1));
 	word = count_size(s, c);
 	i = 0;
 	index = 0;
 	while (s[i])
 	{
-		if ((i == 0 && is_sep(s[i], c) == 0) || \
-			(is_sep(s[i], c) == 0 && is_sep(s[i - 1], c) == 1))
+		if ((i == 0 && !is_sep(s[i], c)) || \
+			(!is_sep(s[i], c) && is_sep(s[i - 1], c)))
 		{
 			words[index] = malloc(sizeof(char) * (word[index] + 1));
 			ft_strncpy((char *)s + i, words[index], word[index]);
