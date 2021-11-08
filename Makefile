@@ -15,7 +15,7 @@ all:		${NAME}
 %.o: %.c
 			${GCC} ${CFLAGS} -c -I ${HEAD} $< -o $@
 
-${NAME}:	${OBJS}
+${NAME}:	fclean ${OBJS}
 			ar -rcs ${NAME} ${OBJS}
 
 bonus : 	${OBJS} ${OBJS_BONUS}
